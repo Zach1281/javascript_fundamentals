@@ -7,7 +7,7 @@
 // output the computer choice and then resolve the game by stating who won
 // prompt player to play again (this involves a do-while loop)
 
-console.log(rockPaperScissors());
+// console.log(rockPaperScissors());
 
 function rockPaperScissors() {
     console.log("Welcome to Zach's Rock, Paper, Scissors Game!");

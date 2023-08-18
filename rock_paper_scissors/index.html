@@ -3,11 +3,34 @@
         <head>
             <title>Rock Paper Scissors</title>
             <meta charset="UTF-8"></meta>
+            <link rel="stylesheet" href="style.css">
+            <script src="rps.js" defer></script>
         </head>
 
         <body>
-            <script src="rps.js"></script>
-
-            <div id="rps"></div>
+            <div id="title">
+                <div id="top-text">
+                    Rock Paper Scissors
+                </div>
+                <div id="bottom-text"></div>
+            </div>
+            <div id="buttons">
+                <button id="rock">
+                    <img src="./image/rock.jpg" alt="Rock">
+                    <p>Rock</p>
+                </button>
+                <button id="paper">
+                    <img src="./image/paper.jpg" alt="Paper">
+                    <p>Paper</p>
+                    </button>
+                <button id="scissors">
+                    <img src="./image/scissors.png" alt="Scissors">
+                    <p>Scissors</p>
+                    </button>
+            </div>
+            <div id="score">
+                <div id="player">Player: <span id="player-score">0</span></div>
+                <div id="computer">Computer: <span id="computer-score">0</span></div>
+            </div>
         </body>
     </html>
