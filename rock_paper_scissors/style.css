@@ -17,11 +17,20 @@ body {
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    flex-direction: column;
+    gap: 24px;
 }
 
 #top-text {
     font-size: 96px;
     font-weight: 400;
+    color: #FFF;
+    background-color: #512400;
+}
+
+#bottom-text {
+    font-size: 46px;
+    font-weight: 200;
     color: #FFF;
     background-color: #512400;
 }

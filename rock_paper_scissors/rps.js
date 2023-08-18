@@ -7,56 +7,55 @@
 // output the computer choice and then resolve the game by stating who won
 // prompt player to play again (this involves a do-while loop)
 
-// console.log(rockPaperScissors());
+let playerScore = 0, computerScore = 0;
+let playerWins = false, computerWins = false;
+const rockBtn = document.querySelector('#rock'), paperBtn = document.querySelector('#paper'), scissorsBtn = document.querySelector('#scissors');
+const playerScoreDisplay = document.querySelector('#player-score'), computerScoreDisplay = document.querySelector('#computer-score');
+const bottomTitleText = document.querySelector('#bottom-text');
 
-function rockPaperScissors() {
-    console.log("Welcome to Zach's Rock, Paper, Scissors Game!");
-    console.log("The computer will go first because you are a measly human!");
-    let playerScore = 0, computerScore = 0;
-    let playerWins = false, computerWins = false;
-    do{
-        let computerChoice = getComputerChoice()
-        let playerChoice = getPlayerChoice();
-        computerChoice = computerChoice.toLowerCase();
-        playerChoice = playerChoice.toLowerCase();
-        let outcome = checkWinner(computerChoice, playerChoice);
-        if(outcome === "computer"){
-            computerScore++;
-        }else if(outcome === "player"){
-            playerScore++;
-        }else{
-            console.log(outcome);
-        }
-        if(playerScore === 5){
-            return "Player Wins!"
-        }else if(computerScore === 5){
-            return "Computer Wins!"
-        }
-        console.log("computer: " + computerScore + " player: " + playerScore);
-    }while(!playerWins || !computerWins);
 
-    if(playerWins){
-        console.log("Player has won!");
-    }else if(computerWins){
-        console.log("Computer has won!");
+rockBtn.addEventListener('click', () => {
+        playRound("rock");
+        checkScoreToWin(computerScore, playerScore);
+
+});
+
+paperBtn.addEventListener('click', () => {
+    playRound("paper");
+    checkScoreToWin(computerScore, playerScore);
+
+}); 
+
+scissorsBtn.addEventListener('click', () => {
+    playRound("scissors");
+    checkScoreToWin(computerScore, playerScore);
+});
+
+
+function playRound(choice) {
+    let computerChoice = getComputerChoice();
+    let playerChoice = choice;
+    let outcome = checkWinner(computerChoice, playerChoice);
+    if(outcome === "computer"){
+        computerScore++;
+        bottomTitleText.textContent = "Computer won this round";
+        computerScoreDisplay.textContent = computerScore;
+    }else if(outcome === "player"){
+        playerScore++;
+        bottomTitleText.textContent = "Player won this round";
+        playerScoreDisplay.textContent = playerScore;
     }else{
-        console.log("WTF how did we get here?");
+        bottomTitleText.textContent = "Tie!";
     }
+    
 }
 
 function getComputerChoice() {
-    let rps = ["Rock", "Paper", "Scissors"];
+    let rps = ["rock", "paper", "scissors"];
     let choice = Math.floor(Math.random() * 3);
     return rps[choice];
 }
 
-function getPlayerChoice() {
-    return choice = prompt("Write rock, paper, or scissors");
-}
-
-// is there a more efficent algorithm for checking whos in rps?
-// currently, id' have to write specific if statements for each scenario
-// can you abstract the strings to a number and check if it's lower or higher?
 function checkWinner(computerChoice, playerChoice){
     if(computerChoice === playerChoice){
         return "tie";
@@ -81,4 +80,22 @@ function checkWinner(computerChoice, playerChoice){
     }else{
         return("You're an idiot!");
     }
+}
+
+function checkScoreToWin(computerScore, playerScore){
+    if(computerScore === 5){
+        bottomTitleText.textContent = "Computer has won!";
+        reset();
+    }
+    if(playerScore === 5){
+        bottomTitleText.textContent = "Player has won!";
+        reset();
+    }
+}
+
+function reset() {
+    computerScore = 0;
+    playerScore = 0;
+    playerScoreDisplay.textContent = 0;
+    computerScoreDisplay.textContent = 0;
 }
