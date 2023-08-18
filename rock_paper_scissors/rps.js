@@ -38,14 +38,14 @@ function playRound(choice) {
     let outcome = checkWinner(computerChoice, playerChoice);
     if(outcome === "computer"){
         computerScore++;
-        bottomTitleText.textContent = "Computer won this round";
+        bottomTitleText.textContent = "Computer won this round with: " + computerChoice;
         computerScoreDisplay.textContent = computerScore;
     }else if(outcome === "player"){
         playerScore++;
-        bottomTitleText.textContent = "Player won this round";
+        bottomTitleText.textContent = "Player won this round with: " + playerChoice;
         playerScoreDisplay.textContent = playerScore;
     }else{
-        bottomTitleText.textContent = "Tie!";
+        bottomTitleText.textContent = "Tie! Both players chose: " + computerChoice;
     }
     
 }
